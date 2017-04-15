@@ -3,12 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <title>Cloudev IDE</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+
+    <script>
+      var database = firebase.database();
+      var storage = firebase.storage();
+      function newproject() {
+        var name = prompt("Please enter a name for the new project.")
+        database.ref('users/' + userId).set({
+          name: true
+        });
+        storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
+      }
+    </script>
   </head>
   <body>
-
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    Files:
+    <ul id="files">
+      <li><a href="project.html?project=project1">project1</a></li>
+    </ul>
+    <button onclick="newproject()">Create New Project</button>
   </body>
 </html>
