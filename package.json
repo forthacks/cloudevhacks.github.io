@@ -1,0 +1,21 @@
+{
+  "name": "cloudev",
+  "version": "1.0.0",
+  "description": "Code collaboration",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/cloudevhacks/cloudev",
+  "keywords": [
+    "Electron",
+    "code",
+    "collaboration",
+    "ide",
+  ],
+  "author": "Riley Kong, Oliver Ni, Frank Wang",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  }
+}
