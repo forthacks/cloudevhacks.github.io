@@ -3,24 +3,33 @@
   <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
+    <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB9ttmojRBWZD7MgGq3uhCCAiokHpQmgdk",
+        authDomain: "cloudev-6f3f5.firebaseapp.com",
+        databaseURL: "https://cloudev-6f3f5.firebaseio.com",
+        projectId: "cloudev-6f3f5",
+        storageBucket: "cloudev-6f3f5.appspot.com",
+        messagingSenderId: "545680646927"
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
   <body>
+    <script src="login.js"></script>
     <h1>Login:</h1>
     <!-- All of the Node.js APIs are available in this renderer process. -->
     <!--We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.-->
-    <form>
-      Username:<br>
-      <input type="text" name="username"><br>
+    <form action="#" method="get" onsubmit="event.preventDefault(); validateform();">
+      Email:<br>
+      <input type="text" id="username" name="username"><br>
       Password:<br>
-      <input type="text" name="password">
+      <input type="text" id="password" name="password">
       <input type="submit" value="Submit">
     </form>
   </body>
-
-  <script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-  </script>
 </html>
