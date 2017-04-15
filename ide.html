@@ -7,12 +7,14 @@
     <script>
       var database = firebase.database();
       var storage = firebase.storage();
+      var storageRef = firebase.storage().ref();
       function newproject() {
         var name = prompt("Please enter a name for the new project.")
         database.ref('users/' + userId).set({
           name: true
         });
-        storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
+        //storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
+        ref.put(name+"/welcome.txt")
       }
     </script>
   </head>
