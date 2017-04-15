@@ -9,3 +9,8 @@ function validateform() {
   });
   return false;
 }
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    window.location.href = "ide.html"
+  }
+});
