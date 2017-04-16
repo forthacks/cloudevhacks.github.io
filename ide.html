@@ -12,7 +12,6 @@
           color: white;
       }
       * {
-        text-align: center;
         font-family: 'Open Sans', sans-serif;
       }
       .faded {
@@ -24,31 +23,76 @@
       #editor {
         height: 80vh;
         width: 90vw;
-        font-family: Inconsolata;
-        text-align: left;
         font-size: 20px;
       }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-javascript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/theme-textmate.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyB9ttmojRBWZD7MgGq3uhCCAiokHpQmgdk",
-        authDomain: "cloudev-6f3f5.firebaseapp.com",
-        databaseURL: "https://cloudev-6f3f5.firebaseio.com",
-        projectId: "cloudev-6f3f5",
-        storageBucket: "cloudev-6f3f5.appspot.com",
-        messagingSenderId: "545680646927"
-      };
-      firebase.initializeApp(config);
-    </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Firepad -->
+  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
+  <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
+  <script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB9ttmojRBWZD7MgGq3uhCCAiokHpQmgdk",
+      authDomain: "cloudev-6f3f5.firebaseapp.com",
+      databaseURL: "https://cloudev-6f3f5.firebaseio.com",
+      projectId: "cloudev-6f3f5",
+      storageBucket: "cloudev-6f3f5.appspot.com",
+      messagingSenderId: "545680646927"
+    };
+    firebase.initializeApp(config);
+    //// Get Firebase Database reference.
+    var firepadRef = firebase.database().ref();
+  </script>
   </head>
   <body>
     <img src="logo.png" height=100>
     <h1>Editing test.js</h1>
-    <textarea id="editor" onkeyup="ups(event)"></textarea>
-    <script src="ide.js"></script>
+    <!-- <textarea id="editor" onkeyup="ups(event)"></textarea>-->
+    <div id="editor" style="height: 80vh;width: 90vw;"></div>
+    <script>
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          console.log("created")
+          //// Create ACE
+          var editor = ace.edit("editor");
+          editor.setTheme("ace/theme/textmate");
+          var session = editor.getSession();
+          session.setUseWrapMode(true);
+          session.setUseWorker(false);
+          var language = window.location.hash.substring(1).split("#")[1].split("|")[1];
+          switch(language){
+            case "py":
+              language = "python"
+            case "js":
+              language = "javascript"
+            case "java":
+              language = "java"
+            case "rb":
+              language = "ruby"
+            case "cpp":
+              language = "c++"
+            case "pl":
+              language = "perl"
+            default:
+              language = "javascript"
+          }
+          session.setMode("ace/mode/"+language);
+          //// Create Firepad.
+          var firepad = Firepad.fromACE(firepadRef, editor, {
+            defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+            ,userId: firebase.auth().currentUser.uid
+          });
+          var hashes = window.location.hash.substring(1).split("#");
+          firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/' + hashes[0] + "/" + hashes[1])
+        }
+      });
+    </script>
+    <!-- <script src="ide.js"></script> -->
   </body>
 </html>
