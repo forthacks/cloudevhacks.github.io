@@ -20,11 +20,26 @@
         display: none;
       }
       #editor {
-        height: 80vh;
+        height: 60vh;
         width: 90vw;
+        margin: auto;
         font-size: 20px;
         text-align: left;
 
+      }
+      button {
+        margin-top: 10px;
+        height: 50px;
+        width: 100px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background-color: #7187DC;
+        color: white;
+      }
+      button:hover {
+        background-color: #6076CB;
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js"></script>
@@ -54,7 +69,7 @@
     <img src="logo.png" height=100>
     <h1 id="FileName">Editing </h1>
     <!-- <textarea id="editor" onkeyup="ups(event)"></textarea>-->
-    <div id="editor" style="height: 80vh;width: 90vw;"></div>
+    <div id="editor"></div>
     <script>
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -96,7 +111,12 @@
           firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/' + hashes[0] + "/" + hashes[1])
         }
       });
+
+      function dwl() {
+        console.log("download")
+      }
     </script>
     <!-- <script src="ide.js"></script> -->
+    <button onclick="dwl()">Download</button>
   </body>
 </html>
