@@ -52,15 +52,15 @@
   </head>
   <body>
     <img src="logo.png" height=100>
-    <h1>Editing test.js</h1>
+    <h1 id="FileName">Editing </h1>
     <!-- <textarea id="editor" onkeyup="ups(event)"></textarea>-->
     <div id="editor" style="height: 80vh;width: 90vw;"></div>
     <script>
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
+          document.getElementById("FileName").innerHTML += window.location.hash.substring(1).split("#")[1].replace("|", ".")
           //// Get Firebase Database reference.
           var firepadRef = firebase.database().ref("users/" + user.uid + "/" + window.location.hash.substring(1).split("#")[0] + "/" + window.location.hash.substring(1).split("#")[1]);
-
           //// Create ACE
           var editor = ace.edit("editor");
           editor.setTheme("ace/theme/textmate");
@@ -82,9 +82,11 @@
             case "pl":
               language = "perl"
             default:
-              language = "javascript"
+              language = "none"
           }
-          session.setMode("ace/mode/"+language);
+          if(language!="none"){
+            session.setMode("ace/mode/"+language);
+          }
           //// Create Firepad.
           var firepad = Firepad.fromACE(firepadRef, editor, {
             defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'

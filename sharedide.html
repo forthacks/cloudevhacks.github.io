@@ -52,12 +52,13 @@
   </head>
   <body>
     <img src="logo.png" height=100>
-    <h1>Editing test.js</h1>
+    <h1 id="FileName">Editing </h1>
     <!-- <textarea id="editor" onkeyup="ups(event)"></textarea>-->
     <div id="editor" style="height: 80vh;width: 90vw;"></div>
     <script>
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
+          document.getElementById("FileName").innerHTML += window.location.hash.substring(1).split("#")[1].replace("|", ".")
           //// Get Firebase Database reference.
 
           firebase.database().ref('users/' + firebase.auth().currentUser.uid + "/sharedprojects/" + window.location.hash.substring(1).split("#")[0]).once('value').then(function(snapshot) {
