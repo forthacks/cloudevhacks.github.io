@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Cloudev IDE</title>
-    <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
     <script>
       // Initialize Firebase
       var config = {
@@ -16,17 +16,14 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script>
-      function newproject(){
-        window.location.href = "createProject.html"
-      }
-    </script>
+    <script src="projects.js"></script>
   </head>
   <body>
-    Files:
-    <ul id="files">
-      <li><a href="project.html?project=project1">project1</a></li>
+    Projects:
+    <ul id="projects">
+      Loading projects...
     </ul>
     <button onclick="newproject()">Create New Project</button>
+
   </body>
 </html>
