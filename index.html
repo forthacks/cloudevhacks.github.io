@@ -1,35 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-    <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyB9ttmojRBWZD7MgGq3uhCCAiokHpQmgdk",
-        authDomain: "cloudev-6f3f5.firebaseapp.com",
-        databaseURL: "https://cloudev-6f3f5.firebaseio.com",
-        projectId: "cloudev-6f3f5",
-        storageBucket: "cloudev-6f3f5.appspot.com",
-        messagingSenderId: "545680646927"
-      };
-      firebase.initializeApp(config);
-    </script>
-  </head>
-  <body>
-    <script src="login.js"></script>
-    <h1>Login:</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    <!--We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.-->
-    <form action="#" method="get" onsubmit="event.preventDefault(); validateform();">
-      Email:<br>
-      <input type="text" id="username" name="username"><br>
-      Password:<br>
-      <input type="text" id="password" name="password">
-      <input type="submit" value="Submit">
-    </form>
-  </body>
+
+<head>
+  <title>Cloudev | Login</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+  <style>
+    html {
+      padding-top: 50px;
+      background-color: #282C31;
+    }
+    * {
+      color: white;
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+    }
+    input {
+      margin-bottom: 10px;
+    }
+    input[type="text"], input[type="password"] {
+      height: 50px;
+      width: 300px;
+      color: black;
+      font-size: 16px;
+      text-align: left;
+      padding: 0px 10px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      background-color: #f5f5f5;
+    }
+    input[type="submit"] {
+      margin-top: 10px;
+      height: 50px;
+      width: 100px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      background-color: #7187DC;
+    }
+    input[type="submit"]:hover {
+      background-color: #6076CB;
+    }
+    .faded {
+      color: #aaaaaa;
+    }
+    .hide {
+      display: none
+    }
+  </style>
+
+  <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB9ttmojRBWZD7MgGq3uhCCAiokHpQmgdk",
+      authDomain: "cloudev-6f3f5.firebaseapp.com",
+      databaseURL: "https://cloudev-6f3f5.firebaseio.com",
+      projectId: "cloudev-6f3f5",
+      storageBucket: "cloudev-6f3f5.appspot.com",
+      messagingSenderId: "545680646927"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script src="login.js"></script>
+</head>
+
+<body>
+  <img src="logo.png" height=150>
+  <h1>Login</h1>
+  <p id="error" class="faded hide">
+    Could not login. Please try again.
+  </p>
+  <form action="#" method="get" onsubmit="event.preventDefault(); validateform();">
+    <input id="email" type="text" placeholder="Enter Email"><br>
+    <input id="password" type="password" placeholder="Enter Password"><br>
+    <input type="submit">
+  </form>
+
+  <script>
+    if (window.location.hash == "#error") {
+      document.getElementById("error").classList.remove("hide");
+    }
+  </script>
+</body>
+
 </html>
