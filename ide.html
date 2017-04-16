@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cloudev | Edit File</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <style>
+      html {
+        padding-top: 50px;
+        background-color: #282C31;
+      }
+      * {
+        color: white;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+      textarea {
+        font-family: Inconsolata;
+        font-size: 15px;
+        text-align: left;
+        background-color: white;
+        color: black;
+        width: 90vw;
+        height: 100%;
+      }
+      .faded {
+        color: #aaaaaa;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB9ttmojRBWZD7MgGq3uhCCAiokHpQmgdk",
+        authDomain: "cloudev-6f3f5.firebaseapp.com",
+        databaseURL: "https://cloudev-6f3f5.firebaseio.com",
+        projectId: "cloudev-6f3f5",
+        storageBucket: "cloudev-6f3f5.appspot.com",
+        messagingSenderId: "545680646927"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="ide.js"></script>
+  </head>
+  <body>
+    <img src="logo.png" height=100>
+    <h1>Editing test.js</h1>
+    <textarea id="editor" rows="30" cols="50">
+      test
+    </textarea>
+  </body>
+</html>
