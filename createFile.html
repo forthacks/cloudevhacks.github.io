@@ -1,8 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
     <title>Create Project</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <style>
+      html {
+        padding-top: 50px;
+        background-color: #282C31;
+      }
+      * {
+        color: white;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+      input {
+        margin-bottom: 10px;
+      }
+      input[type="text"] {
+        height: 50px;
+        width: 300px;
+        color: black;
+        font-size: 16px;
+        text-align: right;
+        padding: 0px 10px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background-color: #f5f5f5;
+      }
+      input[type="submit"] {
+        margin-top: 10px;
+        height: 50px;
+        width: 100px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background-color: #7187DC;
+      }
+      input[type="submit"]:hover {
+        background-color: #6076CB;
+      }
+      .faded {
+        color: #aaaaaa;
+      }
+      .hide {
+        display: none;
+      }
+      #ext {
+        width: 30px;
+        text-align: left;
+      }
+    </style>
+
     <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -16,31 +67,13 @@
       };
       firebase.initializeApp(config);
     </script>
+    <script src="createFile.js"></script>
   </head>
   <body>
-    <script>
-      var database = firebase.database();
-      var storage = firebase.storage();
-      var storageRef = firebase.storage().ref();
-      function validateform() {
-          var name = document.getElementById("name").value
-          database.ref("users/"+firebase.auth().currentUser.uid+"/"+(window.location.hash.substring(1))+"/"+name).set(true)
-          var fileRef = storage.ref("Files/"+name+".txt")
-          var blob = new Blob(["Lit Fam", "So lit"], {'type':"text/plain"});
-          fileRef.put(blob).then(function(snapshot) {
-            console.log('Uploaded a blob!');
-          });
-          window.location.href = "ide.html"+window.location.hash+"#"+name
-          return false
-          //storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
-          // storageRef.put(name+"/welcome.txt")
-      }
-      //storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
-      // storageRef.put(name+"/welcome.txt")
-    </script>
+    <img src="logo.png" height=100>
+    <h1>New File</h1>
     <form action="#" method="get" onsubmit="event.preventDefault(); validateform();">
-      File Name (Include the extension):<br>
-      <input type="text" id="name" name="name"><br>
+      <input type="text" id="name" placeholder="Enter File Name"> . <input type="text" id="ext" placeholder="ext"><br>
       <input type="submit" value="Submit">
     </form>
   </body>
