@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Create File</title>
+    <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB9ttmojRBWZD7MgGq3uhCCAiokHpQmgdk",
+        authDomain: "cloudev-6f3f5.firebaseapp.com",
+        databaseURL: "https://cloudev-6f3f5.firebaseio.com",
+        projectId: "cloudev-6f3f5",
+        storageBucket: "cloudev-6f3f5.appspot.com",
+        messagingSenderId: "545680646927"
+      };
+      firebase.initializeApp(config);
+    </script>
+  </head>
+  <body>
+    <script>
+      var database = firebase.database();
+      var storage = firebase.storage();
+      var storageRef = firebase.storage().ref();
+      function validateform() {
+          var name = document.getElementById("name").value
+          database.ref("users/"+firebase.auth().currentUser.uid+"/"+name).set(true)
+          return false
+          //storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
+          // storageRef.put(name+"/welcome.txt")
+      }
+      //storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
+      // storageRef.put(name+"/welcome.txt")
+    </script>
+    <form action="#" method="get" onsubmit="event.preventDefault(); validateform();">
+      Name:<br>
+      <input type="text" id="name" name="name"><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

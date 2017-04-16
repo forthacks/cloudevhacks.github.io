@@ -11,6 +11,6 @@ function validateform() {
 }
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    window.location.href = "ide.html"
+    window.location.href = "projects.html"
   }
 });
