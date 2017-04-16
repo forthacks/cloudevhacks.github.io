@@ -26,6 +26,8 @@
           var name = document.getElementById("name").value
           database.ref("users/"+firebase.auth().currentUser.uid+"/"+(window.location.hash.substring(1))+"/"+name).set(true)
           window.location.href = "ide.html"+window.location.hash+"#"+name
+          var fileRef = storageRef.child(name)
+          var blob = new Blob([""], {'type':"text/plain"});
           return false
           //storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
           // storageRef.put(name+"/welcome.txt")
