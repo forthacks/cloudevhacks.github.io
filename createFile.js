@@ -11,10 +11,11 @@ function validateform() {
       window.location.reload()
       return
     }
-    database.ref("users/"+firebase.auth().currentUser.uid+"/"+(window.location.hash.substring(1))+"/"+name+"|"+ext).set(true)
-    var fileRef = storage.ref("Files/"+name+"."+ext)
+    database.ref("users/"+firebase.auth().currentUser.uid+"/"+(window.location.hash.substring(1))+"/"+name+"|"+ext+"/chain").set([0, 1])
+    database.ref("users/"+firebase.auth().currentUser.uid+"/"+(window.location.hash.substring(1))+"/"+name+"|"+ext+"/dict").set({0: "H", 1: "i"})
+    /*var fileRef = storage.ref("Files/"+name+"|"+ext)
     var blob = new Blob([" "], {'type':"text/plain"});
-    fileRef.put(blob)
+    fileRef.put(blob)*/
     window.location.href = "ide.html"+window.location.hash+"#"+name+"|"+ext
     return false
     //storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
