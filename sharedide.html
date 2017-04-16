@@ -100,10 +100,14 @@
                 language = "c++"
               case "pl":
                 language = "perl"
+              case 'txt':
+                language = "none"
               default:
                 language = "javascript"
             }
-            session.setMode("ace/mode/"+language);
+            if(language!="none"){
+              session.setMode("ace/mode/"+language);
+            }
             //// Create Firepad.
             var firepad = Firepad.fromACE(firepadRef, editor, {
               defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'

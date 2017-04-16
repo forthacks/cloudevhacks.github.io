@@ -98,8 +98,10 @@
               language = "c++"
             case "pl":
               language = "perl"
-            default:
+            case 'txt':
               language = "none"
+            default:
+              language = "javascript"
           }
           if(language!="none"){
             session.setMode("ace/mode/"+language);
