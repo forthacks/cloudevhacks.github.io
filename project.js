@@ -15,3 +15,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 function newfile() {
   window.location.href = "createFile.html"+window.location.hash
 }
+function share() {
+  window.location.href = "shareProject.html"+window.location.hash
+}
