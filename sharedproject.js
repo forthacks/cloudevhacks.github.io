@@ -7,7 +7,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       firebase.database().ref('users/' + snapshot.val() + "/" + window.location.hash.substring(1)).once('value').then(function(snapshot2) {
         document.getElementById("files").innerHTML = ""
         for (var i in snapshot2.val()) {
-          document.getElementById("files").innerHTML += "<a class='file' href='sharedide.html"+window.location.hash+"#"+i+"'><input type='text' value='"+i+"' readonly></a><br>"
+          document.getElementById("files").innerHTML += "<a class='file' href='sharedide.html"+window.location.hash+"#"+i+"'><input type='text' value='"+i.replace("|", ".")+"' readonly></a><br>"
         }
         document.getElementById("files").removeChild(document.getElementById("files").lastChild)
       });
