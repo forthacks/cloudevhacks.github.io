@@ -24,8 +24,8 @@
       var storageRef = firebase.storage().ref();
       function validateform() {
           var name = document.getElementById("name").value
-          database.ref("users/"+firebase.auth().currentUser.uid+"/"+name).set(true)
-          window.location.href = "project.html"
+          database.ref("users/"+firebase.auth().currentUser.uid+"/"+(window.location.hash.substring(1))+"/"+name).set(true)
+          window.location.href = "ide.html"+window.location.hash+"#"+name
           return false
           //storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
           // storageRef.put(name+"/welcome.txt")
@@ -34,7 +34,7 @@
       // storageRef.put(name+"/welcome.txt")
     </script>
     <form action="#" method="get" onsubmit="event.preventDefault(); validateform();">
-      Project Name:<br>
+      File Name:<br>
       <input type="text" id="name" name="name"><br>
       <input type="submit" value="Submit">
     </form>
