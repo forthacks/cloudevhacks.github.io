@@ -11,8 +11,8 @@ function validateform() {
       window.location.reload()
       return
     }
-    database.ref("users/"+firebase.auth().currentUser.uid+"/"+(window.location.hash.substring(1))+"/"+name+"|"+ext+"/chain").set([0, 1])
-    database.ref("users/"+firebase.auth().currentUser.uid+"/"+(window.location.hash.substring(1))+"/"+name+"|"+ext+"/dict").set({0: "H", 1: "i"})
+    // database.ref("users/"+firebase.auth().currentUser.uid+"/"+(window.location.hash.substring(1))+"/"+name+"|"+ext+"/chain").set([0, 1])
+    // database.ref("users/"+firebase.auth().currentUser.uid+"/"+(window.location.hash.substring(1))+"/"+name+"|"+ext+"/dict").set({0: "H", 1: "i"})
     /*var fileRef = storage.ref("Files/"+name+"|"+ext)
     var blob = new Blob([" "], {'type':"text/plain"});
     fileRef.put(blob)*/
