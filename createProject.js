@@ -4,7 +4,7 @@ var storageRef = firebase.storage().ref();
 function validateform() {
     var name = document.getElementById("name").value
 
-    var regex = new RegExp("^[a-z0-9-_]+$")
+    var regex = new RegExp("^[a-zA-Z0-9-_]+$")
     if (!regex.test(name)) {
       window.location.href = "#error"
       window.location.reload()
