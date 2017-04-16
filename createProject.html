@@ -1,8 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Create Project</title>
+    <title>Cloudev | Create Project</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <style>
+      html {
+        padding-top: 50px;
+        background-color: #282C31;
+      }
+      * {
+        color: white;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+      input {
+        margin-bottom: 10px;
+      }
+      input[type="text"] {
+        height: 50px;
+        width: 300px;
+        color: black;
+        font-size: 16px;
+        text-align: left;
+        padding: 0px 10px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background-color: #f5f5f5;
+      }
+      input[type="submit"] {
+        margin-top: 10px;
+        height: 50px;
+        width: 100px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background-color: #7187DC;
+      }
+      input[type="submit"]:hover {
+        background-color: #6076CB;
+      }
+      .faded {
+        color: #aaaaaa;
+      }
+      .hide {
+        display: none
+      }
+    </style>
+
     <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -16,27 +63,23 @@
       };
       firebase.initializeApp(config);
     </script>
+    <script src="createProject.js"></script>
   </head>
   <body>
-    <script>
-      var database = firebase.database();
-      var storage = firebase.storage();
-      var storageRef = firebase.storage().ref();
-      function validateform() {
-          var name = document.getElementById("name").value
-          database.ref("users/"+firebase.auth().currentUser.uid+"/"+name).set(true)
-          window.location.href = "project.html"
-          return false
-          //storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
-          // storageRef.put(name+"/welcome.txt")
-      }
-      //storage.ref(name+"/welcome.txt") // i dont know how to do the file someone else do it
-      // storageRef.put(name+"/welcome.txt")
-    </script>
+    <img src="logo.png" height=100>
+    <h1>Create Project</h1>
+    <p id="error" class="faded hide">
+      Project name must consist of only letters, numbers, hyphens, and underscores.
+    </p>
     <form action="#" method="get" onsubmit="event.preventDefault(); validateform();">
-      Project Name:<br>
-      <input type="text" id="name" name="name"><br>
-      <input type="submit" value="Submit">
+      <input type="text" id="name" placeholder="Enter Project Name" required><br>
+      <input type="submit">
     </form>
+
+    <script>
+      if (window.location.hash == "#error") {
+        document.getElementById("error").classList.remove("hide");
+      }
+    </script>
   </body>
 </html>
