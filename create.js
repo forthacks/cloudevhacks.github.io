@@ -14,7 +14,7 @@ firebase.auth().onAuthStateChanged(function(user){
     var users = firebase.database().ref().child("users").push()
     users.child(firebase.auth().currentUser.uid).push()
     firebase.auth().signOut();
-    window.location.href += "#created";
+    window.location.href = "index.html"
     window.location.reload()
   }
 })
