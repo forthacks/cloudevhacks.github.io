@@ -9,7 +9,8 @@
       html {
         padding-top: 50px;
         background-color: #282C31;
-          color: white;
+        color: white;
+        text-align: center;
       }
       * {
         font-family: 'Open Sans', sans-serif;
@@ -24,6 +25,8 @@
         height: 80vh;
         width: 90vw;
         font-size: 20px;
+        text-align: left;
+        
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js"></script>
@@ -46,7 +49,7 @@
     };
     firebase.initializeApp(config);
     //// Get Firebase Database reference.
-    var firepadRef = firebase.database().ref();
+    var firepadRef = firebase.database().ref("users/");
   </script>
   </head>
   <body>
@@ -57,7 +60,9 @@
     <script>
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-          console.log("created")
+          //// Get Firebase Database reference.
+          var firepadRef = firebase.database().ref("users/" + user.uid + "/" + window.location.hash.substring(1).split("#")[0] + "/" + window.location.hash.substring(1).split("#")[1]);
+
           //// Create ACE
           var editor = ace.edit("editor");
           editor.setTheme("ace/theme/textmate");
