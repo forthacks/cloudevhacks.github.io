@@ -50,6 +50,7 @@
   <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
   <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
+  <script src="http://danml.com/js/download.js"></script>
   <script>
     // Initialize Firebase
     var config = {
@@ -71,6 +72,7 @@
     <!-- <textarea id="editor" onkeyup="ups(event)"></textarea>-->
     <div id="editor"></div>
     <script>
+      var firepad
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           document.getElementById("FileName").innerHTML += window.location.hash.substring(1).split("#")[1].replace("|", ".")
@@ -103,7 +105,7 @@
             session.setMode("ace/mode/"+language);
           }
           //// Create Firepad.
-          var firepad = Firepad.fromACE(firepadRef, editor, {
+          firepad = Firepad.fromACE(firepadRef, editor, {
             defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
             ,userId: firebase.auth().currentUser.uid
           });
@@ -111,9 +113,8 @@
           firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/' + hashes[0] + "/" + hashes[1])
         }
       });
-
       function dwl() {
-        console.log("download")
+        download(firepad.getText(), window.location.hash.substring(1).split("#")[1].replace("|", "."), "text/plain")
       }
     </script>
     <!-- <script src="ide.js"></script> -->
