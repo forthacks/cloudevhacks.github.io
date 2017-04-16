@@ -9,26 +9,24 @@
       html {
         padding-top: 50px;
         background-color: #282C31;
+          color: white;
       }
       * {
-        color: white;
         text-align: center;
         font-family: 'Open Sans', sans-serif;
-      }
-      textarea {
-        font-family: Inconsolata;
-        font-size: 15px;
-        text-align: left;
-        background-color: white;
-        color: black;
-        width: 90vw;
-        height: 100%;
       }
       .faded {
         color: #aaaaaa;
       }
       .hide {
         display: none;
+      }
+      #editor {
+        height: 1000px;
+        width: 5000px;
+      }
+      #editor textarea {
+        color: white;
       }
     </style>
 
@@ -45,13 +43,17 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script src="ide.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
   </head>
   <body>
     <img src="logo.png" height=100>
     <h1>Editing test.js</h1>
-    <textarea id="editor" rows="30" cols="50">
-      test
-    </textarea>
+    <div id="editor">function foo(items) {
+    var x = "All this is syntax highlighted";
+    return x;
+}</div>
+  <script src="ide.js"></script>
   </body>
 </html>
