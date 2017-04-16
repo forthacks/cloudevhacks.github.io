@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Cloudev | Login</title>
+  <title>Cloudev | Register</title>
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
   <style>
@@ -53,39 +53,36 @@
 
   <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
   <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyB9ttmojRBWZD7MgGq3uhCCAiokHpQmgdk",
-      authDomain: "cloudev-6f3f5.firebaseapp.com",
-      databaseURL: "https://cloudev-6f3f5.firebaseio.com",
-      projectId: "cloudev-6f3f5",
-      storageBucket: "cloudev-6f3f5.appspot.com",
-      messagingSenderId: "545680646927"
-    };
-    firebase.initializeApp(config);
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB9ttmojRBWZD7MgGq3uhCCAiokHpQmgdk",
+    authDomain: "cloudev-6f3f5.firebaseapp.com",
+    databaseURL: "https://cloudev-6f3f5.firebaseio.com",
+    projectId: "cloudev-6f3f5",
+    storageBucket: "cloudev-6f3f5.appspot.com",
+    messagingSenderId: "545680646927"
+  };
+  firebase.initializeApp(config);
   </script>
 
-  <script src="login.js"></script>
+  <script src="create.js"></script>
 </head>
 
 <body>
   <img src="logo.png" height=150>
-  <h1>Login</h1>
-  <p id="error" class="faded hide">
-    Could not login. Please try again.
+  <h1>Register</h1>
+  <p id="created" class="faded hide">
+    Account created, please login on the dekstop application.
   </p>
-  <form action="#" method="get" onsubmit="event.preventDefault(); validateform();">
-    <input id="email" type="text" placeholder="Enter Email"><br>
-    <input id="password" type="password" placeholder="Create Password"><br>
+  <form action="#" method="get" onsubmit="event.preventDefault(); aasubmit()">
+    <input id="email" type="text" placeholder="Enter Email" name="email" required><br>
+    <input id="pass" type="password" placeholder="Enter Password" name="psw" required><br>
     <input type="submit">
   </form>
-  <p id="error" class="faded">
-    Need an account? <a href="create.html">Register!</a>
-  </p>
 
   <script>
-    if (window.location.hash == "#error") {
-      document.getElementById("error").classList.remove("hide");
+    if (window.location.hash == "#created") {
+      document.getElementById("created").classList.remove("hide");
     }
   </script>
 </body>
