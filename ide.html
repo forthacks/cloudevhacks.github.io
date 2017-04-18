@@ -75,6 +75,7 @@
     <div id="editor"></div>
     <script>
       var firepad
+      var language
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           document.getElementById("FileName").innerHTML += window.location.hash.substring(1).split("#")[1].replace("|", ".")
@@ -86,7 +87,6 @@
           var session = editor.getSession();
           session.setUseWrapMode(true);
           session.setUseWorker(false);
-          var language
           var ext = window.location.hash.substring(1).split("#")[1].split("|")[1];
           switch(ext){
             case "py":
@@ -125,9 +125,6 @@
           firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/' + hashes[0] + "/" + hashes[1])
         }
       });
-      function dwl() {
-        download(firepad.getText(), window.location.hash.substring(1).split("#")[1].replace("|", "."), "text/plain")
-      }
     </script>
     <script src="run.js"></script>
     <button onclick="dwl()">Download</button>
