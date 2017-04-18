@@ -55,8 +55,24 @@
         border-bottom-right-radius: 5px;
         border-bottom: none;
       }
+      .shared:first-child input[type="text"] {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-top: none;
+      }
+      .shared:last-child input[type="text"] {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom: none;
+      }
       #projects {
         margin-bottom: 10px;
+      }
+      #shared {
+        margin-bottom: 10px;
+      }
+      .faded {
+        color: #aaaaaa;
       }
     </style>
 
@@ -82,6 +98,13 @@
       Loading projects...
     </div>
     <button onclick="newproject()">Create New Project</button>
+    <h1>Shared With You</h1>
+    <div class="faded">
+      Your User ID is <span id="uid"></span>.
+    </div><br>
+    <div id="shared">
+      Loading shared with you...
+    </div>
 
   </body>
 </html>

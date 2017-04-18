@@ -5,7 +5,7 @@ function validateform() {
     var name = document.getElementById("name").value
 
     var regex = new RegExp("^[a-zA-Z0-9-_]+$")
-    if (!regex.test(name)) {
+    if (!regex.test(name) || name == "sharedprojects") {
       window.location.href = "#error"
       window.location.reload()
       return
