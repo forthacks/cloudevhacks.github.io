@@ -42,6 +42,7 @@
         background-color: #6076CB;
       }
     </style>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-javascript.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/theme-textmate.js"></script>
@@ -51,6 +52,7 @@
   <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
   <script src="http://danml.com/js/download.js"></script>
+  <script>if (window.module) module = window.module;</script>
   <script>
     // Initialize Firebase
     var config = {
@@ -84,22 +86,30 @@
           var session = editor.getSession();
           session.setUseWrapMode(true);
           session.setUseWorker(false);
-          var language = window.location.hash.substring(1).split("#")[1].split("|")[1];
-          switch(language){
+          var language
+          var ext = window.location.hash.substring(1).split("#")[1].split("|")[1];
+          switch(ext){
             case "py":
               language = "python"
+              break;
             case "js":
               language = "javascript"
+              break;
             case "java":
               language = "java"
+              break;
             case "rb":
               language = "ruby"
+              break;
             case "cpp":
               language = "c++"
+              break;
             case "pl":
               language = "perl"
+              break;
             case 'txt':
               language = "none"
+              break;
             default:
               language = "javascript"
           }
@@ -119,7 +129,8 @@
         download(firepad.getText(), window.location.hash.substring(1).split("#")[1].replace("|", "."), "text/plain")
       }
     </script>
-    <!-- <script src="ide.js"></script> -->
+    <script src="run.js"></script>
     <button onclick="dwl()">Download</button>
+    <button onclick="run()">Run</button>
   </body>
 </html>
