@@ -24,10 +24,10 @@ function run(){
 }
 
 function dwl() {
-  mkdirp("/tmp/cloudev", function (err) {
+  mkdirp("tmp/cloudev", function (err) {
     if (err) console.error(err)
   })
-  var stream = fs.createWriteStream("/tmp/cloudev/"+window.location.hash.substring(1).split("#")[1].replace("|","."));
+  var stream = fs.createWriteStream("tmp/cloudev/"+window.location.hash.substring(1).split("#")[1].replace("|","."));
   stream.once('open', function(fd) {
     stream.write(firepad.getText());
     stream.end();
