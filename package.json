@@ -16,7 +16,9 @@
   "author": "Riley Kong, Oliver Ni, Frank Wang",
   "license": "MIT",
   "devDependencies": {
-    "electron": "~1.6.2",
+    "electron": "~1.6.2"
+  },
+  "dependencies": {
     "mkdirp": "0.5.1"
   }
 }
