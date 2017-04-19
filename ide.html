@@ -78,7 +78,7 @@
       var language
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-          document.getElementById("FileName").innerHTML += window.location.hash.substring(1).split("#")[1].replace("|", ".")
+          document.getElementById("FileName").innerHTML = "Editing: "+window.location.hash.substring(1).split("#")[1].replace("|", ".")
           //// Get Firebase Database reference.
           var firepadRef = firebase.database().ref("users/" + user.uid + "/" + window.location.hash.substring(1).split("#")[0] + "/" + window.location.hash.substring(1).split("#")[1]);
           //// Create ACE
