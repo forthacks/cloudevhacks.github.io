@@ -29,7 +29,7 @@ $(document).ready(function(){
         mkdirp("./tmp/", function (err) {
           if (err) console.error(err)
         })
-        fs.writeFile("./tmp/"+"uioppoiu"+filename, firepad.getText(), function (err) {
+        fs.writeFile("./tmp/"+filename, firepad.getText(), function (err) {
           if (err) throw err;
           console.log("It's saved!");
         });
