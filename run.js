@@ -4,6 +4,7 @@ const exec = require('child_process').exec
 const spawn = require('child_process').spawn;
 const fs = require('fs');
 const mkdirp = require('mkdirp');
+const filename = window.location.hash.substring(1).split("#")[1].replace("|",".")
 function run(){
   switch(language){
     case "python":
@@ -22,16 +23,35 @@ function run(){
       language = "javascript"
   }
 }
-
+$(document).ready(function(){
+    $("#download").click(function(){
+        console.log("clicked")
+        mkdirp("./tmp/", function (err) {
+          if (err) console.error(err)
+        })
+        fs.writeFile("./tmp/"+"uioppoiu"+filename, firepad.getText(), function (err) {
+          if (err) throw err;
+          console.log("It's saved!");
+        });
+        // var stream = fs.createWriteStream("randomness"+filename);
+        // stream.once('open', function(fd) {
+        //   console.log("begin")
+        //   stream.write(firepad.getText());
+        //   stream.end();
+        //   console.log("done")
+        // });
+    });
+});
 function dwl() {
-  mkdirp("tmp/cloudev", function (err) {
-    if (err) console.error(err)
-  })
-  var stream = fs.createWriteStream("tmp/cloudev/"+window.location.hash.substring(1).split("#")[1].replace("|","."));
-  stream.once('open', function(fd) {
-    stream.write(firepad.getText());
-    stream.end();
-  });
+
+    mkdirp("tmp/cloudev", function (err) {
+      if (err) console.error(err)
+    })
+    var stream = fs.createWriteStream("tmp/cloudev/"+window.location.hash.substring(1).split("#")[1].replace("|","."));
+    stream.once('open', function(fd) {
+      stream.write(firepad.getText());
+      stream.end();
+    });
   // fs.writeFile("")
   // spawn('echo', [firepad.getText()+'" > Files/'+window.location.hash.substring(1).split("#")[1].replace("|",".")])
   // exec('echo "'+firepad.getText()+'" > Files/'+window.location.hash.substring(1).split("#")[1].replace("|","."), function(error, stdout, stderr) {console.log(error+stderr+stdout)})

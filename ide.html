@@ -47,6 +47,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-javascript.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/theme-textmate.js"></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
   <!-- Firepad -->
   <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
   <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
@@ -129,7 +131,7 @@
     <script>
       require('./run.js')
     </script>
-    <button onclick="dwl()">Download</button>
-    <button onclick="run()">Run</button>
+    <button id = "download">Download</button>
+    <button id = "run">Run</button>
   </body>
 </html>
