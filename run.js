@@ -25,6 +25,7 @@ function run(){
 }
 $(document).ready(function(){
     $("#download").click(function(){
+        console.log(fs.realpathSync('.'))
         console.log("clicked")
         mkdirp("./tmp/", function (err) {
           if (err) console.error(err)
