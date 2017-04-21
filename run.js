@@ -27,13 +27,17 @@ $(document).ready(function(){
     $("#download").click(function(){
         console.log(fs.realpathSync('.'))
         console.log("clicked")
-        mkdirp("./tmp/", function (err) {
-          if (err) console.error(err)
-        })
-        fs.writeFile("./tmp/"+filename, firepad.getText(), function (err) {
-          if (err) throw err;
-          console.log("It's saved!");
+        exec("cat > tmp/"+filename+"\n", function(error, stdout, stderr) {
+          // command output is in stdout
+          console.log(error+" "+stdout+" "+stderr)
         });
+        // mkdirp("./tmp/", function (err) {
+        //   if (err) console.error(err)
+        // })
+        // fs.writeFile("./tmp/"+filename, firepad.getText(), function (err) {
+        //   if (err) throw err;
+        //   console.log("It's saved!");
+        // });
         // var stream = fs.createWriteStream("randomness"+filename);
         // stream.once('open', function(fd) {
         //   console.log("begin")
@@ -43,6 +47,7 @@ $(document).ready(function(){
         // });
     });
 });
+/*
 function dwl() {
 
     mkdirp("tmp/cloudev", function (err) {
@@ -57,3 +62,4 @@ function dwl() {
   // spawn('echo', [firepad.getText()+'" > Files/'+window.location.hash.substring(1).split("#")[1].replace("|",".")])
   // exec('echo "'+firepad.getText()+'" > Files/'+window.location.hash.substring(1).split("#")[1].replace("|","."), function(error, stdout, stderr) {console.log(error+stderr+stdout)})
 }
+*/
